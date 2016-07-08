@@ -1,0 +1,45 @@
+<html>
+<meta http-equiv="Cache-Control" content="no-store" />
+<head>
+  <title>Stock Quote Connector-Tutorial</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+  <script src="https://connectors.tableau.com/libs/tableauwdc-1.1.1.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  (function() {
+      var myConnector = tableau.makeConnector();
+
+      myConnector.getColumnHeaders = function() {
+          var fieldNames = [];
+          var fieldTypes = [];
+          tableau.headersCallback(fieldNames, fieldTypes);
+      }
+
+      myConnector.getTableData = function(lastRecordToken) {
+          var dataToReturn = [];
+          var lastRecordToken = 0;
+          var hasMoreData = false;
+          tableau.dataCallback(dataToReturn, lastRecordToken.toString(), hasMoreData);
+      }
+	  tableau.registerConnector(myConnector);
+  
+	$(document).ready(function() {
+		$("#submitButton").click(function() {
+		var bggUserID = $('#bgguserid').val().trim();
+		if (bggUserID) {
+			tableau.connectionName = "BoardGameGeek collection data for user" + bggUserID;
+			tableau.connectionData = bggUserID;
+			tableau.submit();
+		}
+		});
+	});
+    
+  })();
+  </script>
+</head>
+<body>
+
+ <p>Enter the ID of the BoardGameGeek user: <input type="text" id="bgguserid" /></p>
+  <p><button type="button" id="submitButton">Get the Data</button></p>
+
+</body>
+</html>
