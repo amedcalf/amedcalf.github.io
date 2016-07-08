@@ -18,7 +18,7 @@
 		var dataToReturn = [];
 		var hasMoreData = false;
 
-		// Get parameter values and build YQL query
+		// Get parameter values and build query query
 		var bggUsername = tableau.connectionData;
 		
 		//var connectionUri = buildUri(ticker, startDate, endDate);
@@ -53,8 +53,11 @@
 	  
 	  
 	  tableau.registerConnector(myConnector);
+  	    
+  })();
   
-	$(document).ready(function() {
+  
+  $(document).ready(function() {
 		$("#submitButton").click(function() {
 		var bggUsername = $('#bggUsername').val().trim();
 		if (bggUsername) {
@@ -64,8 +67,8 @@
 		}
 		});
 	});
-    
-  })();
+  
+  
   </script>
 </head>
 <body>
