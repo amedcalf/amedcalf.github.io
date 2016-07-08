@@ -19,7 +19,7 @@
 		var hasMoreData = false;
 
 		// Get parameter values and build YQL query
-		var bggUserID = tableau.connectionData;
+		var bggUsername = tableau.connectionData;
 		
 		//var connectionUri = buildUri(ticker, startDate, endDate);
 		connectionUri = 'http://boardgamegeek.com/xmlapi2/collection?username="' + bggUsername
@@ -56,7 +56,7 @@
   
 	$(document).ready(function() {
 		$("#submitButton").click(function() {
-		var bggUsername = $('#bggusername').val().trim();
+		var bggUsername = $('#bggUsername').val().trim();
 		if (bggUsername) {
 			tableau.connectionName = "BoardGameGeek collection data for user" + bggUsername;
 			tableau.connectionData = bggUsername;
@@ -70,7 +70,7 @@
 </head>
 <body>
 
- <p>Enter the username of the BoardGameGeek user: <input type="text" id="bggusername" /></p>
+ <p>Enter the username of the BoardGameGeek user: <input type="text" id="bggUsername" /></p>
   <p><button type="button" id="submitButton">Get the data</button></p>
 
 </body>
