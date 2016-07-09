@@ -19,7 +19,8 @@
 		var bggUsername = tableau.connectionData;
 		
 		//var connectionUri = buildUri(ticker, startDate, endDate);
-		connectionUri = 'http://boardgamegeek.com/xmlapi2/collection?username=' + bggUsername
+		// connectionUri = 'http://boardgamegeek.com/xmlapi2/collection?username=' + bggUsername
+		connectionUri = 'http://bgg-api.herokuapp.com/api/v1/collection?username=' + bggUsername
 		
 		
 		var xhr = $.ajax({
@@ -27,7 +28,7 @@
 		  dataType: 'xml',
 		  success: function (data) {
 			  if (data.query.results) {
-				  var games = data.query.results.quote;
+				  var games = data.query.results.item;
 				  var ii;
 				  for (ii = 0; ii < games.length; ++ii) {
 					  var entry = {'BoardgameName': games[ii].name
