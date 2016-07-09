@@ -27,9 +27,9 @@
 		  url: connectionUri,
 		  dataType: 'json',
 		  success: function (data) {
-			  if (data.items.item) {
+			  if (data.items) {
 			  //I changed the item bit below
-				  var games = data.items.item;
+				  var games = data.items;
 				  var ii;
 				  for (ii = 0; ii < games.length; ++ii) {
 					  var entry = {'BoardgameName': games[ii].name
@@ -72,7 +72,7 @@
 </head>
 <body>
 
- <p>Test 2Enter the username of the BoardGameGeek user: <input type="text" id="bggUsername" /></p>
+ <p>Test 3Enter the username of the BoardGameGeek user: <input type="text" id="bggUsername" /></p>
   <p><button type="button" id="submitButton">Get the data</button></p>
 
 </body>
