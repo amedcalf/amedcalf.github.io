@@ -45,10 +45,10 @@
 				}
 		  },
 		  error: function (xhr, ajaxOptions, thrownError) {
-		  console.log("in bad section");
+
 		  
 			  // If the connection fails, log the error and return an empty set.
-			  tableau.log("Connection error: " + xhr.responseText + "\n" + thrownError);
+			  tableau.log("in bad section: Connection error: " + xhr.responseText + "\n" + thrownError);
 			  tableau.abortWithError("Error while trying to connect to the BoardGameGeek data source.");
 		  }
 		});
