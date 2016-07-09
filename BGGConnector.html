@@ -7,36 +7,32 @@
   <script type="text/javascript">
   (function() {
       var myConnector = tableau.makeConnector();
-
 	myConnector.getColumnHeaders = function() {
 		var fieldNames = ['BoardgameName'];
 		var fieldTypes = ['string'];
 		tableau.headersCallback(fieldNames, fieldTypes);
 	}
-
       myConnector.getTableData = function(lastRecordToken) {
 		var dataToReturn = [];
 		var hasMoreData = false;
-
 		// Get parameter values and build query query
 		var bggUsername = tableau.connectionData;
 		
 		//var connectionUri = buildUri(ticker, startDate, endDate);
-		//connectionUri = 'http://boardgamegeek.com/xmlapi2/collection?username=' + bggUsername
-		connectionUri = 'http://bgg-api.herokuapp.com/api/v1/collection?username=' + bggUsername
+		connectionUri = 'http://boardgamegeek.com/xmlapi2/collection?username=' + bggUsername
+		
 		
 		var xhr = $.ajax({
 		  url: connectionUri,
-		  dataType: 'json',
+		  dataType: 'xml',
 		  success: function (data) {
-				
 			  if (data.query.results) {
-				  var games = data.query.results.item;
+				  var games = data.query.results.quote;
 				  var ii;
 				  for (ii = 0; ii < games.length; ++ii) {
 					  var entry = {'BoardgameName': games[ii].name
-					  dataToReturn.push(entry);
 								 };
+					  dataToReturn.push(entry);
 				  }
 				  tableau.dataCallback(dataToReturn, lastRecordToken, false);
 				}
@@ -45,8 +41,6 @@
 				}
 		  },
 		  error: function (xhr, ajaxOptions, thrownError) {
-
-		  
 			  // If the connection fails, log the error and return an empty set.
 			  tableau.log("Connection error: " + xhr.responseText + "\n" + thrownError);
 			  tableau.abortWithError("Error while trying to connect to the BoardGameGeek data source.");
