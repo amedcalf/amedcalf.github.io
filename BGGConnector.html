@@ -29,9 +29,9 @@
 		  url: connectionUri,
 		  dataType: 'json',
 		  success: function (data) {
-				//console.log("in good section");
+				
 			  if (data.query.results) {
-				  var games = data.query.results.quote;
+				  var games = data.query.results.item;
 				  var ii;
 				  for (ii = 0; ii < games.length; ++ii) {
 					  var entry = {'BoardgameName': games[ii].name
@@ -48,7 +48,7 @@
 
 		  
 			  // If the connection fails, log the error and return an empty set.
-			  tableau.log("in bad section: Connection error: " + xhr.responseText + "\n" + thrownError);
+			  tableau.log("Connection error: " + xhr.responseText + "\n" + thrownError);
 			  tableau.abortWithError("Error while trying to connect to the BoardGameGeek data source.");
 		  }
 		});
