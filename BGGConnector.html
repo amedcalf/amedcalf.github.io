@@ -28,8 +28,8 @@
 		  dataType: 'json',
 		  success: function (data) {
 			  if (data.items.item) {
-			  //I changed the item bit below - navigating the structure is presumably the problem
-				  var games = data.items.item;
+			  //I changed the item bit below - navigating the structure is presumably the problem. Is it because the financial one is "flatter?" see ontenote
+				  var games = data.items.item.0.name;
 				  var ii;
 				  for (ii = 0; ii < games.length; ++ii) {
 					  var entry = {'BoardgameName': games[ii].name
@@ -72,7 +72,7 @@
 </head>
 <body>
 
- <p>Test 3Enter the username of the BoardGameGeek user: <input type="text" id="bggUsername" /></p>
+ <p>Test 4Enter the username of the BoardGameGeek user: <input type="text" id="bggUsername" /></p>
   <p><button type="button" id="submitButton">Get the data</button></p>
 
 </body>
