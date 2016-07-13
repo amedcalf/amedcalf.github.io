@@ -8,8 +8,8 @@
   (function() {
       var myConnector = tableau.makeConnector();
 	myConnector.getColumnHeaders = function() {
-		var fieldNames = ['BoardgameName','YearPublished'];
-		var fieldTypes = ['string','int'];
+		var fieldNames = ['BoardgameName','YearPublished','ImageURL','ImageThumbnailURL', 'Plays'];
+		var fieldTypes = ['string','int','string','string','int'];
 		tableau.headersCallback(fieldNames, fieldTypes);
 	}
       myConnector.getTableData = function(lastRecordToken) {
@@ -44,8 +44,11 @@
 					
 					
 					var entry = {'BoardgameName': games[ii].name[0]._,
-									'YearPublished': games[ii].yearpublished[0]				
-					
+									'YearPublished': games[ii].yearpublished[0],
+									'ImageURL': games[ii].image[0],
+									'ImageThumbnailURL': games[ii].thumbnail[0],
+									'Plays': games[ii].numplays[0]
+									
 								 };
 					  dataToReturn.push(entry);
 				  }
@@ -73,7 +76,7 @@
 		$("#submitButton").click(function() {
 		var bggUsername = $('#bggUsername').val().trim();
 		if (bggUsername) {
-			tableau.connectionName = "BoardGameGeek collection data for user" + bggUsername;
+			tableau.connectionName = "BoardGameGeek collection data for user " + bggUsername;
 			tableau.connectionData = bggUsername;
 			tableau.submit();
 		}
