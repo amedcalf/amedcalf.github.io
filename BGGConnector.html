@@ -9,7 +9,7 @@
       var myConnector = tableau.makeConnector();
 	myConnector.getColumnHeaders = function() {
 		var fieldNames = ['BoardgameName','YearPublished','ImageURL','ImageThumbnailURL', 'Plays','Owned','PreviouslyOwned','ForTrade','Want','WantToPlay','WantToBuy','Wishlist','Preordered','LastModified'];
-		var fieldTypes = ['string','int','string','string','int','int','int','int','int','int','int','int','int','int','datetime'];
+		var fieldTypes = ['string','int','string','string','int','int','int','int','int','int','int','int','int','datetime'];
 		tableau.headersCallback(fieldNames, fieldTypes);
 	}
       myConnector.getTableData = function(lastRecordToken) {
@@ -95,7 +95,7 @@
   </script>
 </head>
 <body>
-
+<h1>Tableau Web Data Connector for BoardGameGeek collections</h1>
  <p>Enter the username of the BoardGameGeek user: <input type="text" id="bggUsername" /></p>
   <p><button type="button" id="submitButton">Get the data</button></p>
 
