@@ -19,7 +19,9 @@
 		// Get parameter values and build  query
 		var bggUsername = tableau.connectionData;
 		
-		connectionUri = 'http://bgg-api.herokuapp.com/api/v1/collection?username=' + bggUsername
+		connectionUri = 'http://bgg-api.herokuapp.com/api/v1/collection?username=' + bggUsername;
+		
+		tableau.log("URI " + connectionUri)
 		
 		
 		var xhr = $.ajax({
