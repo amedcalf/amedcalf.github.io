@@ -33,8 +33,8 @@
 					
 					var entry = {'BoardgameName': games[ii].name[0]._,
 									'YearPublished': games[ii].yearpublished[0],
-									'ImageURL': 'http:' + games[ii].image[0],
-									'ImageThumbnailURL': 'http:' + games[ii].thumbnail[0],
+									'ImageURL': 'https:' + games[ii].image[0],
+									'ImageThumbnailURL': 'https:' + games[ii].thumbnail[0],
 									'Plays': games[ii].numplays[0],
 									'Owned': games[ii].status[0].$.own,
 									'PreviouslyOwned': games[ii].status[0].$.prevowned,
@@ -84,8 +84,8 @@
 </head>
 <body>
 <h1>Tableau Web Data Connector for BoardGameGeek collections</h1>
- <p>Important: please make sure you have visited https://boardgamegeek.com/xmlapi2/collection?username=[YOURUSERNAME] recently before using this data connector, otherwise you may be stuck in a lengthy API queue!</p>  
- <p>Enter the username of the BoardGameGeek user: <input type="text" id="bggUsername" /></p>
+ <p><strong>Important</strong>: please make sure you have visited https://boardgamegeek.com/xmlapi2/collection?username=[YOURUSERNAME] recently <strong>before</strong> using this data connector, otherwise you may be stuck in a lengthy API queue!</p>  
+ <p>Once you've done that - please enter the username of the BoardGameGeek user: <input type="text" id="bggUsername" /></p>
   <p><button type="button" id="submitButton">Get the data</button></p>
 
 </body>
